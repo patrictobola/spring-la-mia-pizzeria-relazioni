@@ -19,7 +19,11 @@
         <img th:src="${pizza.photo}" alt="Pizza Photo">      
         <div class="pb-5"></div>
         <ul>
-            <li th:each="offer : ${pizza.offers}" th:text="${offer.name}"></li>
+            <li th:each="offer : ${pizza.offers}">
+                <span th:text="${offer.name}"></span>
+                <a th:href="@{'/pizza/discount/edit/' + ${offer.id}}" class="btn btn-warning btn-sm">Edit</a>
+                <hr />
+            </li>
         </ul>
         <a href="/" class="btn btn-primary">Back to main menu</a>
         <a th:href="@{/pizza/discount}" class="btn btn-primary">Create a new offer</a>
