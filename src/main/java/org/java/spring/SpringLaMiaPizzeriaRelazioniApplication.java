@@ -1,6 +1,10 @@
 package org.java.spring;
 
+import java.util.List;
+
+import org.java.spring.db.pojo.Discount;
 import org.java.spring.db.pojo.Pizza;
+import org.java.spring.db.serv.DiscountService;
 import org.java.spring.db.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +18,8 @@ public class SpringLaMiaPizzeriaRelazioniApplication implements CommandLineRunne
 	
 	@Autowired
 	private PizzaService pizzaService;
+	@Autowired
+	private DiscountService discountService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaRelazioniApplication.class, args);
@@ -27,6 +33,14 @@ public class SpringLaMiaPizzeriaRelazioniApplication implements CommandLineRunne
 		pizzaService.save(new Pizza("Insalata di pollo", "Non ci crederai mai.... INSALATA DI POLLO!", IMG_URL, 9.90f));
 		pizzaService.save(new Pizza("Pizza X", "Pomodoro, mozzarella e altri ingredienti segreti", IMG_URL, 9.90f));
 		pizzaService.save(new Pizza("Napoli", "Pomodoro, Alici, Prezzemolo", IMG_URL, 9.90f));
+		
+		List<Pizza> pizzas = pizzaService.findAll();
+		
+		discountService.save(new Discount("2023-10-15", "2024-01-10", "offertona numero 1!" , pizzas.get(0)));
+		discountService.save(new Discount("2023-11-15", "2024-01-10", "offertona numero 2!" , pizzas.get(1)));
+		discountService.save(new Discount("2023-11-15", "2024-01-10", "offertona numero 2bis!" , pizzas.get(1)));
+		discountService.save(new Discount("2023-12-15", "2024-01-20", "offertona numero 3!" , pizzas.get(2)));
+		discountService.save(new Discount("2023-10-20", "2024-01-30", "offertona numero 4!" , pizzas.get(3)));
 	}
 
 }

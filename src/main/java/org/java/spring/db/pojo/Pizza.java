@@ -3,6 +3,7 @@ package org.java.spring.db.pojo;
 import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
+import org.java.spring.dto.DiscountPizzaDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -50,6 +51,14 @@ public class Pizza {
 		setDeleted(false);
 	}
 	
+
+	public List<Discount> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(List<Discount> offers) {
+		this.offers = offers;
+	}
 
 	public Integer getId() {
 		return id;
