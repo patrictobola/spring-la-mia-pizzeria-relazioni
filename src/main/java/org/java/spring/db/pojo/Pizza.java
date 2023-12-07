@@ -1,5 +1,7 @@
 package org.java.spring.db.pojo;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.Column;
@@ -7,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,6 +36,9 @@ public class Pizza {
 	
 	
 	private boolean deleted;
+	
+	@OneToMany(mappedBy = "pizza")
+	private List<Discount> offers;
 	
 	public Pizza() {}
 	
