@@ -11,9 +11,11 @@
 	<div class="container">
 		<h1 class="text-center">Lista degli ingredienti</h1>
 		<ul class="list-group">
-			<li th:each="ingredient : ${ingredients}" th:object="${ingredient}" class="list-group-item">
+			<li th:each="ingredient : ${ingredients}" th:object="${ingredient}" class="list-group-item d-flex justify-content-between">
 				[[*{name}]]
+				<a class="btn btn-danger" th:href="@{/ingredients/delete/{id}(id=${ingredient.id})}">DELETE</a>
 			</li>
+			
 		</ul>
 		<div class="d-flex justify-content-between mt-5">
 			<a th:href="@{/}" class="btn btn-warning">Main menu</a>
