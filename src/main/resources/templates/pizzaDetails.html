@@ -25,6 +25,19 @@
                 <hr />
             </li>
         </ul>
+        <div
+				th:if="*{pizza.ingredients.size() > 0}"
+				>
+				<h4>Ingredienti</h4>
+				<ul>
+					<li
+						th:each="ingredient : *{pizza.ingredients}"
+						th:object="${ingredient}"
+					>
+						[[*{name}]] <br>
+					</li>
+				</ul>
+			</div>
         <a href="/" class="btn btn-primary">Back to main menu</a>
         <a th:href="@{/pizza/discount}" class="btn btn-primary">Create a new offer</a>
     </div>

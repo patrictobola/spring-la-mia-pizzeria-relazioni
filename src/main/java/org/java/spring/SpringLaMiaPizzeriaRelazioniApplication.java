@@ -42,7 +42,7 @@ public class SpringLaMiaPizzeriaRelazioniApplication implements CommandLineRunne
 		List<Ingredient> ingredients = ingredientService.findAll();
 
 		
-		pizzaService.save(new Pizza("Margherita", "Pomodoro, mozzarella", IMG_URL, 9.90f, ingredients.get(1)));
+		pizzaService.save(new Pizza("Margherita", "Pomodoro, mozzarella", IMG_URL, 9.90f, ingredients.get(1),ingredients.get(2),ingredients.get(4)));
 		pizzaService.save(new Pizza("Diavola", "Pomodoro, mozzarella, salami", IMG_URL, 9.90f));
 		pizzaService.save(new Pizza("Verdure", "Mozzarella, verdure (ma dai?)", IMG_URL, 9.90f));
 		pizzaService.save(new Pizza("Insalata di pollo", "Non ci crederai mai.... INSALATA DI POLLO!", IMG_URL, 9.90f));

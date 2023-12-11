@@ -38,6 +38,13 @@
 					th:text="${pizza.id == null ? 'Crea pizza!' : 'Modifica pizza!'}"></button>
 				<a th:href="@{/}" class="btn btn-warning">Main menu</a>
 			</div>
+			<div th:each="ingredient : ${ingredients}" th:object="${ingredient}">
+				<input type="checkbox" th:id="${'ingredient-' + ingredient.id}" th:value="*{id}"
+					th:field="${pizza.ingredients}">
+				<label th:for="${'ingredient-' + ingredient.id}">[[*{name}]]</label>
+				<br>
+
+			</div>
 		</form>
 	</div>
 </body>
