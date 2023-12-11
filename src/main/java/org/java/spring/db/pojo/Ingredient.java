@@ -21,7 +21,7 @@ public class Ingredient {
 	private String name;
 	
 	@ManyToMany(mappedBy = "ingredients")
-	private List<Pizza> pizza;
+	private List<Pizza> pizzas;
 	
 	public Ingredient() {
 		
@@ -44,11 +44,11 @@ public class Ingredient {
 	}
 
 	public List<Pizza> getPizza() {
-		return pizza;
+		return pizzas;
 	}
 
-	public void setPizza(List<Pizza> pizza) {
-		this.pizza = pizza;
+	public void setPizza(List<Pizza> pizzas) {
+		this.pizzas = pizzas;
 	}
 
 	

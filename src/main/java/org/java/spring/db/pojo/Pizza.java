@@ -1,5 +1,6 @@
 package org.java.spring.db.pojo;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
@@ -46,12 +47,13 @@ public class Pizza {
 	
 	public Pizza() {}
 	
-	public Pizza(String name, String description, String photo, float price) {
+	public Pizza(String name, String description, String photo, float price, Ingredient... ingredients ) {
 		setName(name);
 		setDescription(description);
 		setPhoto(photo);
 		setPrice(price);
 		setDeleted(false);
+		setIngredients(ingredients);
 	}
 	
 
@@ -93,6 +95,17 @@ public class Pizza {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
+	public void setIngredients(Ingredient... ingredients) {
+		setIngredients(Arrays.asList(ingredients));
 	}
 
 	public Float getPrice() {

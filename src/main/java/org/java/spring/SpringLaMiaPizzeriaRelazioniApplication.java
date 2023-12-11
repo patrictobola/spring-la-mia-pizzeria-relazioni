@@ -31,7 +31,18 @@ public class SpringLaMiaPizzeriaRelazioniApplication implements CommandLineRunne
 	
 	@Override
 	public void run(String... args) throws Exception {
-		pizzaService.save(new Pizza("Margherita", "Pomodoro, mozzarella", IMG_URL, 9.90f));
+		
+		ingredientService.save(new Ingredient("Mozzarella"));
+		ingredientService.save(new Ingredient("Pomodoro"));
+		ingredientService.save(new Ingredient("Salame"));
+		ingredientService.save(new Ingredient("Cicoria"));
+		ingredientService.save(new Ingredient("Roba bella"));
+		ingredientService.save(new Ingredient("Calamari"));
+		
+		List<Ingredient> ingredients = ingredientService.findAll();
+
+		
+		pizzaService.save(new Pizza("Margherita", "Pomodoro, mozzarella", IMG_URL, 9.90f, ingredients.get(1)));
 		pizzaService.save(new Pizza("Diavola", "Pomodoro, mozzarella, salami", IMG_URL, 9.90f));
 		pizzaService.save(new Pizza("Verdure", "Mozzarella, verdure (ma dai?)", IMG_URL, 9.90f));
 		pizzaService.save(new Pizza("Insalata di pollo", "Non ci crederai mai.... INSALATA DI POLLO!", IMG_URL, 9.90f));
@@ -45,13 +56,6 @@ public class SpringLaMiaPizzeriaRelazioniApplication implements CommandLineRunne
 		discountService.save(new Discount("2023-11-15", "2024-01-10", "offertona numero 2bis!" , pizzas.get(1)));
 		discountService.save(new Discount("2023-12-15", "2024-01-20", "offertona numero 3!" , pizzas.get(2)));
 		discountService.save(new Discount("2023-10-20", "2024-01-30", "offertona numero 4!" , pizzas.get(3)));
-		
-		ingredientService.save(new Ingredient("Mozzarella"));
-		ingredientService.save(new Ingredient("Pomodoro"));
-		ingredientService.save(new Ingredient("Salame"));
-		ingredientService.save(new Ingredient("Cicoria"));
-		ingredientService.save(new Ingredient("Roba bella"));
-		ingredientService.save(new Ingredient("Calamari"));
 		
 	}
 
