@@ -2,12 +2,12 @@ package org.java.spring.db.pojo;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PreRemove;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -21,10 +21,16 @@ public class Ingredient {
 	@NotBlank(message = "L'ingrediente non può essere vuoto")
 	private String name;
 	
-	@ManyToMany(mappedBy = "ingredients", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "ingredients")
 	private List<Pizza> pizzas;
-	
-	public Ingredient() {
+
+    @PreRemove
+    private void removeIngredientFromPizzas() {
+        for (Pizza pizza : pizzas) {
+            pizza.getIngredients().remove(this);
+        }
+    }
+	public Ingredient() {	
 		
 	}
 	public Ingredient(String name) {
